@@ -10,3 +10,5 @@ python -m venv venv
 pip install -r requirements.txt
 ./manage.py runserver
 ```
+
+Your app should be running at http://localhost:8000
