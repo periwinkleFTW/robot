@@ -2,7 +2,7 @@
 
 {% block content %}
 
-    <h2>List of instruction</h2>
+    <h2>List of instruction sets</h2>
 
     {% for set in instruction_sets %}
         <div class="card">
@@ -12,6 +12,7 @@
                 <li>Steps in DOWN direction {{ set.down }}</li>
                 <li>Steps in LEFT direction {{ set.left }}</li>
                 <li>Steps in RIGHT direction {{ set.right }}</li>
+                <li><h6>Distance travelled (euclidean): {{ set.get_euclidean_dist }} </h6></li>
             </ul>
         </div>
     {% endfor %}

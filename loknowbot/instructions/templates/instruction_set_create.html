@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>hello</h1>
+    <div class="card-block">
+        <div class="row">
+            <div class="col-md-6">
+                <h5 class="mt-5">Instruction set</h5>
+                <hr>
+                <form method="post">{% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-success shadow-2 mb-4" title="Save instructions" data-toggle="tooltip">Save instructions</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    {#    <form action="{% url 'instructions:instruction-set-create' %}" method="post" enctype="multipart/form-data">#}
+    {#    {% csrf_token %}#}
+    {#        <h2>Create Instruction Set</h2>#}
+    {#        <div class="form-group">#}
+    {#        </div>>#}
+    {#        <button class="btn btn-primary" type="submit">Add</button>#}
+    {#    </form>#}
+
+{% endblock %}

@@ -12,7 +12,7 @@ class InstructionSetAdmin(admin.ModelAdmin):
     def get_distance(self, obj):
         return obj.get_euclidean_dist()
 
-    get_distance.short_description = 'Distance traveled'
+    get_distance.short_description = 'Distance travelled'
 
 
 admin.site.register(InstructionSet, InstructionSetAdmin)
