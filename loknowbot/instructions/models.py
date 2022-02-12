@@ -23,8 +23,8 @@ class InstructionSet(models.Model):
         return reverse('instructions:instruction-set-detail', args=[str(self.id)])
 
     def get_euclidean_dist(self):
-        x_dir = self.left + self.right
-        y_dir = self.up + self.down
+        x_dir = self.left - self.right
+        y_dir = self.up - self.down
         return round(sqrt(x_dir**2 + y_dir**2), 1)
 
     def get_num_of_instructions(self):
