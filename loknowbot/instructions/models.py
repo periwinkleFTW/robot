@@ -26,6 +26,17 @@ class InstructionSet(models.Model):
         y_dir = self.up + self.down
         return round(sqrt(x_dir**2 + y_dir**2), 1)
 
-
     def get_num_of_instructions(self):
-        pass
+        # Movement in any direction is considered 1 instruction
+        num_instructions = 0
+        if self.up != 0:
+            num_instructions += 1
+        if self.down != 0:
+            num_instructions += 1
+        if self.left != 0:
+            num_instructions += 1
+        if self.right != 0:
+            num_instructions += 1
+        return num_instructions
+
+

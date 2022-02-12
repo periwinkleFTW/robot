@@ -6,13 +6,14 @@
 
     {% for set in instruction_sets %}
         <div class="card">
-            <h5>{{set}}</h5>
+            <h5><a href="{{ set.get_absolute_url }}">{{set}}</a></h5>
             <ul>
                 <li>Steps in UP direction {{ set.up }}</li>
                 <li>Steps in DOWN direction {{ set.down }}</li>
                 <li>Steps in LEFT direction {{ set.left }}</li>
                 <li>Steps in RIGHT direction {{ set.right }}</li>
                 <li><h6>Distance travelled (euclidean): {{ set.get_euclidean_dist }} </h6></li>
+                <li><h6>Number of instructions: {{ set.get_num_of_instructions }} </h6></li>
             </ul>
         </div>
     {% endfor %}
