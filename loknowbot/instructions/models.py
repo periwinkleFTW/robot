@@ -1,5 +1,6 @@
 from math import sqrt
 
+from django.urls import reverse
 from django.db import models
 from django.utils.translation import gettext as _
 
@@ -16,6 +17,9 @@ class InstructionSet(models.Model):
 
     def __str__(self):
         return f'Instruction Set #{self.id}'
+
+    def get_absolute_url(self):
+        return reverse('instructions:instruction-set-detail', args=[str(self.id)])
 
     def get_euclidean_dist(self):
         x_dir = self.left + self.right

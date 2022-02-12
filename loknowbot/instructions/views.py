@@ -1,5 +1,5 @@
-from django.views import View
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView, ListView, CreateView
+from django.urls import reverse
 
 from .models import InstructionSet
 from .forms import InstructionForm
@@ -17,8 +17,11 @@ class InstructionListView(ListView):
     model = InstructionSet
 
 
-class InstructionCreateView(View):
+class InstructionCreateView(CreateView):
     template_name = 'instruction_set_create.html'
     model = InstructionSet
     form_class = InstructionForm
+
+    def get_success_url(self):
+        return reverse('instructions:instruction-set-detail', kwargs={'slug' : self.object.id})
 
