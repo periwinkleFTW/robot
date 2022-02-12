@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h2>List of instruction</h2>
+
+    {% for set in instruction_sets %}
+        <div class="card">
+            <h5>{{set}}</h5>
+            <ul>
+                <li>Steps in UP direction {{ set.up }}</li>
+                <li>Steps in DOWN direction {{ set.down }}</li>
+                <li>Steps in LEFT direction {{ set.left }}</li>
+                <li>Steps in RIGHT direction {{ set.right }}</li>
+            </ul>
+        </div>
+    {% endfor %}
+
+{% endblock %}
