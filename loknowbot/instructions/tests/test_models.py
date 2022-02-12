@@ -32,4 +32,7 @@ class InstructionSetModelTest(TestCase):
     def test_get_num_of_instructions(self):
         self.assertEqual(self.test_set.get_num_of_instructions(), 4)
 
+    def tearDown(self):
+        self.test_set.delete()
+
 
