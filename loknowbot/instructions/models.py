@@ -11,7 +11,10 @@ class InstructionSet(models.Model):
         verbose_name = _('Instruction Set')
         verbose_name_plural = _('Instruction Sets')
 
-    def get_euclidian_dist(self):
+    def __str__(self):
+        return f'Instruction Set #{self.id}'
+
+    def get_euclidean_dist(self):
         pass
 
     def get_num_of_instructions(self):
