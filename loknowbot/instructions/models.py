@@ -1,5 +1,8 @@
+from math import sqrt
+
 from django.db import models
 from django.utils.translation import gettext as _
+
 
 class InstructionSet(models.Model):
     up = models.IntegerField(_('Number of steps in the UP direction'), default=0)
@@ -15,7 +18,10 @@ class InstructionSet(models.Model):
         return f'Instruction Set #{self.id}'
 
     def get_euclidean_dist(self):
-        pass
+        x_dir = self.left + self.right
+        y_dir = self.up + self.down
+        return round(sqrt(x_dir**2 + y_dir**2), 1)
+
 
     def get_num_of_instructions(self):
         pass
