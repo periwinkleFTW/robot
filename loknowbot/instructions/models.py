@@ -14,6 +14,7 @@ class InstructionSet(models.Model):
     class Meta:
         verbose_name = _('Instruction Set')
         verbose_name_plural = _('Instruction Sets')
+        ordering = ['id']
 
     def __str__(self):
         return f'Instruction Set #{self.id}'
