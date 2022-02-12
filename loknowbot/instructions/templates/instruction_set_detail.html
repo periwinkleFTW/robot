@@ -2,13 +2,19 @@
 
 {% block content %}
 
-    <form action="{% url 'instructions:instruction-set-create' %}" method="post" enctype="multipart/form-data">
-        <h2>Add Instruction</h2>
-        <div class="form-group">
-            <label class="text-dark text-sm">Instructions</label>
-            {{ form.as_p }}
-        </div>>
-        <button class="btn btn-primary" type="submit">Add</button>
+    <form action="{% url 'instructions:instruction-set-update' instruction_set.id %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2>Details of Instruction set of {{ instruction_set.id }}</h2>
+        <div class="card-body">
+            <ul>
+                <li>Steps in UP direction {{ instruction_set.up }}</li>
+                <li>Steps in DOWN direction {{ instruction_set.down }}</li>
+                <li>Steps in LEFT direction {{ instruction_set.left }}</li>
+                <li>Steps in RIGHT direction {{ instruction_set.right }}</li>
+                <li><h6>Distance travelled (euclidean): {{ instruction_set.get_euclidean_dist }} </h6></li>
+            </ul>
+            <button class="btn btn-primary" type="submit">Edit</button>
+        </div>
     </form>
 
 {% endblock %}
