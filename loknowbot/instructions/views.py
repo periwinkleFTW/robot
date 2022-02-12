@@ -31,3 +31,4 @@ class InstructionUpdateView(UpdateView):
 
     def get_success_url(self):
         return reverse('instructions:instruction-set-detail', kwargs={'pk': self.object.id})
+
