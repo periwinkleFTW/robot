@@ -12,4 +12,10 @@ pip install -r requirements.txt
 coverage run --source='.' manage.py test myapp
 ```
 
+If you want to see a detailed report on test coverage run
+```bash
+coverage html
+```
+Then open `/htmlcov/index.html` with your browser
+
 Your app should be running at http://localhost:8000

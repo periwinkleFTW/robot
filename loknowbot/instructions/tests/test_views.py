@@ -1,10 +1,7 @@
-from django.shortcuts import get_object_or_404
 from django.test import TestCase
 from django.urls import reverse
 
 from ..models import InstructionSet
-from ..forms import InstructionForm
-
 
 class InstructionListViewTest(TestCase):
     def setUp(self):
@@ -59,3 +56,27 @@ class TestInstructionDetailView(TestCase):
         self.assertContains(response, 'Steps in RIGHT direction 77')
         self.assertContains(response, 'Distance travelled (euclidean): 31.1')
 
+
+class TestInstructionCreateView(TestCase):
+
+    def test_success_url_redirect(self):
+        response = self.client.post('/instructions/add/', data={'up': 22, 'down': 33, 'left': 44, 'right': 55})
+        self.assertRedirects(response, reverse("instructions:instruction-set-detail", args='1'))
+
+
+class TestInstructionUpdateView(TestCase):
+
+    def setUp(self):
+        self.test_set = InstructionSet.objects.create(up=11, down=33, left=55, right=77)
+
+    def test_success_url_redirect(self):
+        response = self.client.post('/instructions/update/1/', data={'up': 22,
+                                                                     'down': 33,
+                                                                     'left': 44,
+                                                                     'right': 55})
+        self.assertRedirects(response, reverse("instructions:instruction-set-detail", args='1'))
+
+        test_set_updated = InstructionSet.objects.get(up=22, down=33, left=44, right=55)
+
+        # Assert the test_set and test_set_update have the same id
+        self.assertEqual(self.test_set.id, test_set_updated.id)
