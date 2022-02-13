@@ -9,7 +9,8 @@ python -m venv venv
 . venv/bin/activate
 pip install -r requirements.txt
 ./manage.py runserver
-coverage run --source='.' manage.py test myapp
+coverage run --source='.' manage.py test loknowbot
+coverage report
 ```
 
 If you want to see a detailed report on test coverage run
