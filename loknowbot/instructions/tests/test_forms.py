@@ -1,8 +1,6 @@
 from django.test import TestCase
-from django.core.exceptions import ValidationError
 
 from ..forms import InstructionForm
-from ..models import InstructionSet
 
 
 class InstructionFormTest(TestCase):
