@@ -1,7 +1,9 @@
+from django.shortcuts import get_object_or_404
 from django.test import TestCase
 from django.urls import reverse
 
 from ..models import InstructionSet
+from ..forms import InstructionForm
 
 
 class InstructionListViewTest(TestCase):
@@ -34,7 +36,7 @@ class InstructionListViewTest(TestCase):
 
 class TestInstructionDetailView(TestCase):
     def setUp(self):
-        InstructionSet.objects.create(up=111, down=333, left=555, right=777)
+        InstructionSet.objects.create(up=11, down=33, left=55, right=77)
 
     def test_view_url_exists_at_desired_location(self):
         response = self.client.get('/instructions/1/')
@@ -51,15 +53,9 @@ class TestInstructionDetailView(TestCase):
 
     def test_view_contains_correct_data(self):
         response = self.client.get(reverse('instructions:instruction-set-detail', args='1'))
-        self.assertContains(response, 'Steps in UP direction 111')
-        self.assertContains(response, 'Steps in DOWN direction 333')
-        self.assertContains(response, 'Steps in LEFT direction 555')
-        self.assertContains(response, 'Steps in RIGHT direction 777')
+        self.assertContains(response, 'Steps in UP direction 11')
+        self.assertContains(response, 'Steps in DOWN direction 33')
+        self.assertContains(response, 'Steps in LEFT direction 55')
+        self.assertContains(response, 'Steps in RIGHT direction 77')
+        self.assertContains(response, 'Distance travelled (euclidean): 31.1')
 
-
-class TestInstructionCreateView(TestCase):
-    pass
-
-
-class TestInstructionUpdateView(TestCase):
-    pass

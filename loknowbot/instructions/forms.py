@@ -20,25 +20,29 @@ class InstructionForm(forms.ModelForm):
     def clean_up(self):
         data = self.cleaned_data['up']
         if data['up'] is not int:
-            raise ValidationError(_('Invalid "UP" input - steps must be whole numbers'))
+            raise ValidationError(_('Invalid "UP" input %(value)s - steps must be whole numbers'),
+                                  code='invalid input')
         return data
 
     def clean_down(self):
         data = self.cleaned_data['down']
         if data['down'] is not int:
-            raise ValidationError(_('Invalid "DOWN" input - steps must be whole numbers'))
+            raise ValidationError(_('Invalid "DOWN" input %(value)s - steps must be whole numbers'),
+                                  code='invalid input')
         return data
 
     def clean_left(self):
         data = self.cleaned_data['left']
         if data['left'] is not int:
-            raise ValidationError(_('Invalid "LEFT" input - steps must be whole numbers'))
+            raise ValidationError(_('Invalid "LEFT" input %(value)s - steps must be whole numbers'),
+                                  code='invalid input')
         return data
 
     def clean_right(self):
         data = self.cleaned_data['right']
         if data['right'] is not int:
-            raise ValidationError(_('Invalid "RIGHT" input - steps must be whole numbers'))
+            raise ValidationError(_('Invalid "RIGHT" input %(value)s - steps must be whole numbers'),
+                                  code='invalid input')
         return data
 
 
