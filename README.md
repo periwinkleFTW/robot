@@ -9,6 +9,7 @@ python -m venv venv
 . venv/bin/activate
 pip install -r requirements.txt
 ./manage.py runserver
+coverage run --source='.' manage.py test myapp
 ```
 
 Your app should be running at http://localhost:8000
