@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.test import TestCase
 from django.urls import reverse
 
@@ -60,7 +61,10 @@ class TestInstructionDetailView(TestCase):
 class TestInstructionCreateView(TestCase):
 
     def test_success_url_redirect(self):
-        response = self.client.post('/instructions/add/', data={'up': 22, 'down': 33, 'left': 44, 'right': 55})
+        response = self.client.post('/instructions/add/', data={'up': 22,
+                                                                'down': 33,
+                                                                'left': 44,
+                                                                'right': 55})
         self.assertRedirects(response, reverse("instructions:instruction-set-detail", args='1'))
 
 
